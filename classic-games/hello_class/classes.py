@@ -442,9 +442,10 @@ class Character(Entity):
         existance = []
         boolean = False
         for character in enemies:
-            if self.around(character, cells): #and character.hp != 0:
-                existance.append(character)
-                boolean = True
+            if character.hp != 0:
+                if self.around(character, cells): #and character.hp != 0:
+                    existance.append(character)
+                    boolean = True
         return existance, boolean
 
 class Player(Character):
@@ -517,6 +518,7 @@ class Butterfly(Minor_Characters):
                     break
             else:
                 self.haotic_move(directions)
+                break
 
 class Car(Minor_Characters):
     def __init__(self, x, y, image ):
